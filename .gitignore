@@ -1,0 +1,14 @@
+# Python & venv
+.venv/
+__pycache__/
+*.pyc
+
+# Archives / tooling
+*.zip
+*.7z
+
+# VS Code
+.vscode/
+
+# Optional: ignore generated queries if you only want Sigma as source of truth
+# detections/kusto/*.kql

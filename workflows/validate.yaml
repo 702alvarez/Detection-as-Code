@@ -1,0 +1,15 @@
+name: Validate Rules
+on: [pull_request]
+jobs:
+  lint_convert:
+      runs-on: windows-latest
+          steps:
+                - uses: actions/checkout@v4
+                      - uses: actions/setup-python@v5
+                              with: { python-version: '3.11' }
+                                    - run: pip install sigma-cli
+                                          - name: Lint Rules
+                                                  run: sigma-cli lint detections/sigma
+                                                        - name: Convert
+                                                                run: sigma-cli convert -t sentinel -o detections/kql detections/sigma
+                                                                

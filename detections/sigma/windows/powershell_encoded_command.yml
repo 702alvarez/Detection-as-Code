@@ -1,0 +1,24 @@
+﻿title: PowerShell EncodedCommand Usage
+id: c4a0c1f0-1a9a-4b9a-ae5f-1a9a2b7d47b2   # <-- use a real UUID: [guid]::NewGuid() in PowerShell
+status: test
+description: Detects PowerShell launched with -EncodedCommand (common obfuscation).
+author: Anthony Alvarez
+date: 2025/09/01
+tags:
+  - attack.t1059.001
+  - os.windows
+  - tool.powershell
+logsource:
+  product: windows
+  service: sysmon
+detection:
+  selection:
+    EventID: 1
+    Image|endswith: '\powershell.exe'
+    CommandLine|contains:
+      - '-enc'
+      - '-EncodedCommand'
+  condition: selection
+falsepositives:
+  - admin scripts
+level: medium
